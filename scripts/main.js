@@ -27,7 +27,7 @@ function destiny(fate, src, alt) {
 }
 
 function killedOrNot() {
-
+    const fate = localStorage.getItem('fate');
     button.classList.add('hidden');
     title.classList.add('hidden');
 
@@ -38,17 +38,12 @@ function killedOrNot() {
     } else {
         destiny(spared, chin, chinAlt);
     }
-
     localStorage.setItem('fate', message.innerHTML);
-    message.innerHTML = '';
     cache();
-
 }
 
 function cache() {
-    localStorage.getItem('fate');
-
-    if (localStorage.getItem('fate') === killed) {
+    if (fate === killed) {
         destiny(killed, snap, snapAlt);
     } else {
         destiny(spared, chin, chinAlt);
