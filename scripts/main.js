@@ -40,17 +40,19 @@ function killedOrNot() {
     }
 
     localStorage.setItem('fate', message.innerHTML);
-    /* cache(); */
+    message.innerHTML = '';
+    cache();
 
 }
 
-/* function cache() {
-    console.log(killed)
+function cache() {
+    localStorage.getItem('fate');
+
     if (localStorage.getItem('fate') === killed) {
         destiny(killed, snap, snapAlt);
     } else {
         destiny(spared, chin, chinAlt);
-    } 
-}*/
+    }
+}
 
 button.addEventListener('click', killedOrNot);
