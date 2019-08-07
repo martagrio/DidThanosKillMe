@@ -13,12 +13,33 @@ const message = document.createElement('h2');
 const spared = document.createTextNode('You were spared by Thanos.');
 const killed = document.createTextNode('You were slain by Thanos, for the good of the Universe.');
 
+let fate = JSON.parse(localStorage.getItem('fate'));
+
+function cache() {
+	
+	if (fate === null) {
+
+		button.addEventListener('click', killedOrNot);
+
+	} else if (fate === 0) {
+		button.classList.add('hidden');
+    title.classList.add('hidden');
+    destiny(killed, snap, snapAlt);
+
+  } else if (fate === 1) {
+		button.classList.add('hidden');
+    title.classList.add('hidden');
+    destiny(spared, chin, chinAlt);
+  }
+}
+
+cache();
+
 function getRandom() {
     return Math.floor(Math.random() * 2);
 }
 
 function destiny(fate, src, alt) {
-
     message.appendChild(fate);
     page.appendChild(message);
     image.src = src;
@@ -27,7 +48,6 @@ function destiny(fate, src, alt) {
 }
 
 function killedOrNot() {
-    const fate = localStorage.getItem('fate');
     button.classList.add('hidden');
     title.classList.add('hidden');
 
@@ -38,16 +58,6 @@ function killedOrNot() {
     } else {
         destiny(spared, chin, chinAlt);
     }
-    localStorage.setItem('fate', message.innerHTML);
-    cache();
-}
 
-function cache() {
-    if (fate === killed) {
-        destiny(killed, snap, snapAlt);
-    } else {
-        destiny(spared, chin, chinAlt);
-    }
+    localStorage.setItem('fate', getRandom());
 }
-
-button.addEventListener('click', killedOrNot);
