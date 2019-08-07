@@ -16,7 +16,7 @@ const killed = document.createTextNode('You were slain by Thanos, for the good o
 let fate = JSON.parse(localStorage.getItem('fate'));
 
 function cache() {
-	
+
 	if (fate === null) {
 
 		button.addEventListener('click', killedOrNot);
@@ -32,8 +32,6 @@ function cache() {
     destiny(spared, chin, chinAlt);
   }
 }
-
-cache();
 
 function getRandom() {
     return Math.floor(Math.random() * 2);
@@ -61,3 +59,5 @@ function killedOrNot() {
 
     localStorage.setItem('fate', getRandom());
 }
+
+cache();
