@@ -18,15 +18,12 @@ let fate = JSON.parse(localStorage.getItem('fate'));
 function cache() {
 
 	if (fate === null) {
-
 		button.addEventListener('click', killedOrNot);
-
 	} else if (fate === 0) {
 		button.classList.add('hidden');
     title.classList.add('hidden');
     destiny(killed, snap, snapAlt);
-
-  } else if (fate === 1) {
+  } else {
 		button.classList.add('hidden');
     title.classList.add('hidden');
     destiny(spared, chin, chinAlt);
@@ -48,7 +45,6 @@ function destiny(fate, src, alt) {
 function killedOrNot() {
     button.classList.add('hidden');
     title.classList.add('hidden');
-
     getRandom();
 
     if (getRandom() === 0) {
@@ -56,7 +52,6 @@ function killedOrNot() {
     } else {
         destiny(spared, chin, chinAlt);
     }
-
     localStorage.setItem('fate', getRandom());
 }
 
